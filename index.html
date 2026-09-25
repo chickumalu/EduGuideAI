@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>EduGuide AI - Career Recommendation</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef4ff;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 25px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2563eb;
+            outline: none;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .intro {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>EduGuide AI</h1>
+
+    <h2>AI-Based Career Recommendation System</h2>
+
+    <p class="intro">
+        Answer the following questions honestly.
+        EduGuide AI analyzes your subjects, interests,
+        abilities, personality and work preferences
+        to find a suitable career match.
+    </p>
+
+
+    <form action="/result" method="POST">
+
+
+        <!-- SUBJECT INFORMATION -->
+
+        <h3>1. Which subject is easiest for you?</h3>
+        <input type="text" name="easy_subject"
+               placeholder="Example: Mathematics"
+               required>
+
+
+        <h3>2. Which subject are you most interested in?</h3>
+        <input type="text" name="interest_subject"
+               placeholder="Example: Biology"
+               required>
+
+
+        <h3>3. Which subject is most difficult for you?</h3>
+        <input type="text" name="difficult_subject"
+               placeholder="Example: History"
+               required>
+
+
+        <h3>4. Which subject did you score the lowest in?</h3>
+        <input type="text" name="lowest_subject"
+               placeholder="Example: Physics"
+               required>
+
+
+        <h3>5. Which subject did you score the highest in?</h3>
+        <input type="text" name="highest_subject"
+               placeholder="Example: Computer Science"
+               required>
+
+
+        <h3>6. What marks did you receive in your subjects?</h3>
+        <input type="text" name="marks"
+               placeholder="Example: Maths 90, Science 85, English 88"
+               required>
+
+
+        <!-- INTEREST -->
+
+        <h3>7. Which area are you most interested in?</h3>
+
+        <select name="interest_area" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Technology">
+                Technology
+            </option>
+
+            <option value="Science">
+                Science
+            </option>
+
+            <option value="Business">
+                Business
+            </option>
+
+            <option value="Arts and Creativity">
+                Arts and Creativity
+            </option>
+
+            <option value="Healthcare">
+                Healthcare
+            </option>
+
+            <option value="Law and Government">
+                Law and Government
+            </option>
+
+            <option value="Education">
+                Education
+            </option>
+
+            <option value="Media and Communication">
+                Media and Communication
+            </option>
+
+            <option value="Sports">
+                Sports
+            </option>
+
+            <option value="Beauty and Fashion">
+                Beauty and Fashion
+            </option>
+
+            <option value="Defence">
+                Defence
+            </option>
+
+            <option value="Aviation">
+                Aviation
+            </option>
+
+        </select>
+
+
+        <!-- TALENTS -->
+
+        <h3>8. What is your strongest talent?</h3>
+
+        <input type="text"
+               name="talent"
+               placeholder="Example: Drawing, leadership, coding"
+               required>
+
+
+        <h3>9. What are you naturally good at?</h3>
+
+        <input type="text"
+               name="good_at"
+               placeholder="Example: Explaining things"
+               required>
+
+
+        <!-- PROBLEM SOLVING -->
+
+        <h3>10. What type of problems do you enjoy solving?</h3>
+
+        <select name="problems" required>
+
+            <option value="">Select an option</option>
+
+            <option value="People-related problems">
+                People-related problems
+            </option>
+
+            <option value="Mathematical problems">
+                Mathematical problems
+            </option>
+
+            <option value="Technical problems">
+                Technical problems
+            </option>
+
+            <option value="Creative problems">
+                Creative problems
+            </option>
+
+            <option value="Business problems">
+                Business problems
+            </option>
+
+            <option value="Scientific problems">
+                Scientific problems
+            </option>
+
+            <option value="Organizational problems">
+                Organizational problems
+            </option>
+
+        </select>
+
+
+        <h3>11. What is one thing you can talk about without getting bored?</h3>
+
+        <input type="text"
+               name="talk_about"
+               placeholder="Example: Sports, technology, fashion"
+               required>
+
+
+        <h3>12. What is one activity that you enjoy and are good at?</h3>
+
+        <input type="text"
+               name="activity"
+               placeholder="Example: Photography, coding, sports"
+               required>
+
+
+        <!-- SKILLS -->
+
+        <h3>13. How comfortable are you with calculations?</h3>
+
+        <select name="calculations" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Very comfortable">
+                Very comfortable
+            </option>
+
+            <option value="Comfortable">
+                Comfortable
+            </option>
+
+            <option value="Average">
+                Average
+            </option>
+
+            <option value="Not very comfortable">
+                Not very comfortable
+            </option>
+
+            <option value="Not comfortable at all">
+                Not comfortable at all
+            </option>
+
+        </select>
+
+
+        <h3>14. How comfortable are you with public speaking?</h3>
+
+        <select name="public_speaking" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Very comfortable">
+                Very comfortable
+            </option>
+
+            <option value="Comfortable">
+                Comfortable
+            </option>
+
+            <option value="Average">
+                Average
+            </option>
+
+            <option value="Not very comfortable">
+                Not very comfortable
+            </option>
+
+            <option value="Not comfortable at all">
+                Not comfortable at all
+            </option>
+
+        </select>
+
+
+        <h3>15. How comfortable are you with interacting with people?</h3>
+
+        <select name="people" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Very comfortable">
+                Very comfortable
+            </option>
+
+            <option value="Comfortable">
+                Comfortable
+            </option>
+
+            <option value="Average">
+                Average
+            </option>
+
+            <option value="Not very comfortable">
+                Not very comfortable
+            </option>
+
+            <option value="Not comfortable at all">
+                Not comfortable at all
+            </option>
+
+        </select>
+
+
+        <!-- WORK PREFERENCES -->
+
+        <h3>16. What type of work do you prefer?</h3>
+
+        <select name="work_type" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Office and computer work">
+                Office and computer work
+            </option>
+
+            <option value="Working with people">
+                Working with people
+            </option>
+
+            <option value="Working with machines">
+                Working with machines
+            </option>
+
+            <option value="Creative work">
+                Creative work
+            </option>
+
+            <option value="Outdoor work">
+                Outdoor work
+            </option>
+
+            <option value="Research and analysis">
+                Research and analysis
+            </option>
+
+        </select>
+
+
+        <h3>17. Do you prefer working alone or with a team?</h3>
+
+        <select name="teamwork" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Mostly alone">
+                Mostly alone
+            </option>
+
+            <option value="Mostly in a team">
+                Mostly in a team
+            </option>
+
+            <option value="Both">
+                Both
+            </option>
+
+        </select>
+
+
+        <h3>18. Do you prefer practical work or theoretical work?</h3>
+
+        <select name="work_style" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Practical work">
+                Practical work
+            </option>
+
+            <option value="Theoretical work">
+                Theoretical work
+            </option>
+
+            <option value="Both">
+                Both
+            </option>
+
+        </select>
+
+
+        <h3>19. How comfortable are you with technology?</h3>
+
+        <select name="technology" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Very comfortable">
+                Very comfortable
+            </option>
+
+            <option value="Comfortable">
+                Comfortable
+            </option>
+
+            <option value="Average">
+                Average
+            </option>
+
+            <option value="Not very comfortable">
+                Not very comfortable
+            </option>
+
+            <option value="Not comfortable at all">
+                Not comfortable at all
+            </option>
+
+        </select>
+
+
+        <h3>20. How creative do you consider yourself?</h3>
+
+        <select name="creativity" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Very creative">
+                Very creative
+            </option>
+
+            <option value="Creative">
+                Creative
+            </option>
+
+            <option value="Average">
+                Average
+            </option>
+
+            <option value="Not very creative">
+                Not very creative
+            </option>
+
+        </select>
+
+
+        <h3>21. How do you feel about helping and teaching other people?</h3>
+
+        <select name="helping" required>
+
+            <option value="">Select an option</option>
+
+            <option value="I really enjoy it">
+                I really enjoy it
+            </option>
+
+            <option value="I enjoy it">
+                I enjoy it
+            </option>
+
+            <option value="I don't mind it">
+                I don't mind it
+            </option>
+
+            <option value="I don't enjoy it">
+                I don't enjoy it
+            </option>
+
+        </select>
+
+
+        <h3>22. How comfortable are you with making decisions?</h3>
+
+        <select name="decisions" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Very comfortable">
+                Very comfortable
+            </option>
+
+            <option value="Comfortable">
+                Comfortable
+            </option>
+
+            <option value="Sometimes difficult">
+                Sometimes difficult
+            </option>
+
+            <option value="Very difficult">
+                Very difficult
+            </option>
+
+        </select>
+
+
+        <h3>23. What kind of environment do you prefer?</h3>
+
+        <select name="environment" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Quiet and focused">
+                Quiet and focused
+            </option>
+
+            <option value="Social and active">
+                Social and active
+            </option>
+
+            <option value="Fast-paced">
+                Fast-paced
+            </option>
+
+            <option value="Flexible and creative">
+                Flexible and creative
+            </option>
+
+            <option value="Structured and organized">
+                Structured and organized
+            </option>
+
+        </select>
+
+
+        <h3>24. What matters most to you in a future career?</h3>
+
+        <select name="priority" required>
+
+            <option value="">Select an option</option>
+
+            <option value="High income">
+                High income
+            </option>
+
+            <option value="Job security">
+                Job security
+            </option>
+
+            <option value="Helping people">
+                Helping people
+            </option>
+
+            <option value="Creativity">
+                Creativity
+            </option>
+
+            <option value="Freedom and flexibility">
+                Freedom and flexibility
+            </option>
+
+            <option value="Learning and growth">
+                Learning and growth
+            </option>
+
+        </select>
+
+
+        <h3>25. What motivates you the most?</h3>
+
+        <select name="motivation" required>
+
+            <option value="">Select an option</option>
+
+            <option value="Solving difficult problems">
+                Solving difficult problems
+            </option>
+
+            <option value="Helping people">
+                Helping people
+            </option>
+
+            <option value="Creating new things">
+                Creating new things
+            </option>
+
+            <option value="Learning new things">
+                Learning new things
+            </option>
+
+            <option value="Earning money">
+                Earning money
+            </option>
+
+            <option value="Getting recognition">
+                Getting recognition
+            </option>
+
+            <option value="Making a difference">
+                Making a difference
+            </option>
+
+        </select>
+
+
+        <button type="submit">
+            Get My Career Recommendation
+        </button>
+
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
